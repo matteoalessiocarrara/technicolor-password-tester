@@ -41,9 +41,9 @@ static inline bool test0(char * pass)
 	 * carattere della stringa (e non oltre la fine della stringa!!)
 	 */
 
-    for (short i = 0; i < (PASS_LEN - 2); i++)
-    {
-        if (pass[i] == pass[i + 1])
+	for (short i = 0; i < (PASS_LEN - 2); i++)
+	{
+		if (pass[i] == pass[i + 1])
 		{
 			if (pass[i + 1] == pass[i + 2])
 				return false;
@@ -52,9 +52,9 @@ static inline bool test0(char * pass)
 				 * caratteri già controllati da questo if */
 				i++;
 		}
-    }
+	}
 
-    return true;
+	return true;
 }
 
 
@@ -63,12 +63,12 @@ static inline bool test0(char * pass)
  */
 static inline bool test1(char * pass)
 {
-    short af = 0, numbers = 0;
+	short af = 0, numbers = 0;
 
-    for (short i = 0; i < PASS_LEN; i++)
-    	is_af(pass[i])? af++ : numbers++;
+	for (short i = 0; i < PASS_LEN; i++)
+		is_af(pass[i])? af++ : numbers++;
 
-    return ((af > 5) || (numbers > 9))? false : true;
+	return ((af > 5) || (numbers > 9))? false : true;
 }
 
 
@@ -86,7 +86,7 @@ static inline bool test2(char * pass)
 	 * un carattere
 	 */
 
-    for (short i = 0; i < PASS_LEN; i++)
+	for (short i = 0; i < PASS_LEN; i++)
 	{
 		test_ch = pass[i];
 		times = 0;

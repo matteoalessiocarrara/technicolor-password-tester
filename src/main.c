@@ -33,12 +33,12 @@
 int main()
 {
 	/* Contiene: password + '\n' + '\0' */
-    char line[PASS_LEN + 1 + 1];
+	char line[PASS_LEN + 1 + 1];
 	bool ignore_until_newline = false;
 
 	/* Legge password da stdin fino a quando non riceve EOF */
-    while (fgets(line, PASS_LEN + 2, stdin) != NULL)
-    {
+	while (fgets(line, PASS_LEN + 2, stdin) != NULL)
+	{
 		printd("letto \"%s\"\n", line);
 
 		/* strlen considera anche \n, mentre PASS_LEN no */
@@ -99,5 +99,5 @@ int main()
 	}
 
 	printd("EOF\n");
-    return 0;
+	return 0;
 }
