@@ -96,12 +96,12 @@ static inline bool test2(char * pass)
 
 	/* Contiamo quante volte ogni carattere è nella password */
 	for (short i = 0; i < PASS_LEN; i++)
-		{
-			times[dec(pass[i])] += 1;
+	{
+		times[dec(pass[i])] += 1;
 
-			if (times[dec(pass[i])] > 3)
-				return false;
-		}
+		if (times[dec(pass[i])] > 3)
+			return false;
+	}
 
 	return true;
 }
