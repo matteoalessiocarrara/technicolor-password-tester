@@ -25,6 +25,15 @@
 /* Controlla se il carattere è A, B, C, D, E o F */
 # define is_af(ch) (((ch) >= 'A') && ((ch) <= 'F'))
 
+<<<<<<< HEAD
+=======
+/* Controlla se il carattere è un numero in ASCII */
+# define is_09(ch) (((ch) >= '0') && ((ch) <= '9'))
+
+/* Converte un carattere ASCII esadecimale in un numero (-1 in caso di errore) */
+# define dec(hex) (is_09(hex)? hex - '0' : is_af(hex)? hex - 'A' + 10 : -1)
+
+>>>>>>> stable
 /* Funzioni prese da https://github.com/emanueleforestieri/technicolor_bruteforce
  * Grazie a Emanuele Forestieri <forestieriemanuele@gmail.com>
  */
@@ -77,6 +86,7 @@ static inline bool test1(char * pass)
  */
 static inline bool test2(char * pass)
 {
+<<<<<<< HEAD
 	char test_ch;
 	short times;
 
@@ -97,6 +107,27 @@ static inline bool test2(char * pass)
 				if (++times > 3)
 					return false;
 	}
+=======
+	/* Ogni elemento di questo array rappresenta un carattere del charset
+	 * L'indice si ottiene semplicemente traducendo il carattere da esadecimale
+	 * a decimale
+	 * Per es, l'indice per "F" sarà 15, mentre per "A" 10
+	 */
+	short times[16];
+
+	/* Azzeriamo ogni elemento dell'array times*/
+	for (short i = 0; i < 16; i ++)
+		times[i] = 0;
+
+	/* Contiamo quante volte ogni carattere è nella password */
+	for (short i = 0; i < PASS_LEN; i++)
+		{
+			times[dec(pass[i])] += 1;
+
+			if (times[dec(pass[i])] > 3)
+				return false;
+		}
+>>>>>>> stable
 
 	return true;
 }
@@ -110,6 +141,13 @@ extern inline bool is_valid_pass(char * pass)
 	 * si perde tempo inutilmente
 	 */
 
+<<<<<<< HEAD
+=======
+	/* FIXME Prima di fare i test dobbiamo assicurarci che sia composta da caratteri
+	 * validi, perché le altre funzioni danno per scontato che lo sia e se così
+	 * non fosse potrebbero crearsi problemi
+	 */
+>>>>>>> stable
 	if (test0(pass) == false)
 		return false;
 	else if (test1(pass) == false)
