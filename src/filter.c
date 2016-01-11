@@ -22,6 +22,9 @@
 # include "header.h"
 # include "debug.h"
 
+/* Quando anche uno short è troppo... */
+typedef unsigned char byte;
+
 /* Controlla se il carattere è A, B, C, D, E o F */
 # define is_af(ch) (((ch) >= 'A') && ((ch) <= 'F'))
 
@@ -47,7 +50,7 @@ static inline bool test0(char * pass)
 	 * carattere della stringa (e non oltre la fine della stringa!!)
 	 */
 
-	for (short i = 0; i < (PASS_LEN - 2); i++)
+	for (byte i = 0; i < (PASS_LEN - 2); i++)
 	{
 		if (pass[i] == pass[i + 1])
 		{
@@ -69,9 +72,9 @@ static inline bool test0(char * pass)
  */
 static inline bool test1(char * pass)
 {
-	short af = 0, numbers = 0;
+	byte af = 0, numbers = 0;
 
-	for (short i = 0; i < PASS_LEN; i++)
+	for (byte i = 0; i < PASS_LEN; i++)
 		is_af(pass[i])? af++ : numbers++;
 
 	return ((af > 5) || (numbers > 9))? false : true;
@@ -88,14 +91,14 @@ static inline bool test2(char * pass)
 	 * a decimale
 	 * Per es, l'indice per "F" sarà 15, mentre per "A" 10
 	 */
-	short times[16];
+	byte times[16];
 
 	/* Azzeriamo ogni elemento dell'array times*/
-	for (short i = 0; i < 16; i ++)
+	for (byte i = 0; i < 16; i ++)
 		times[i] = 0;
 
 	/* Contiamo quante volte ogni carattere è nella password */
-	for (short i = 0; i < PASS_LEN; i++)
+	for (byte i = 0; i < PASS_LEN; i++)
 	{
 		times[dec(pass[i])] += 1;
 
@@ -115,10 +118,13 @@ extern inline bool is_valid_pass(char * pass)
 	 * si perde tempo inutilmente
 	 */
 
-	/* FIXME Prima di fare i test dobbiamo assicurarci che sia composta da caratteri
-	 * validi, perché le altre funzioni danno per scontato che lo sia e se così
-	 * non fosse potrebbero crearsi problemi
+	/* Dobbiamo essere sicuri che la stringa sia composta da 0-9 o A-F, prima
+	 * di passarla ai test
 	 */
+	for (byte i = 0; i < PASS_LEN; i++)
+		if(!(is_09(pass[i]) ^ is_af(pass[i])))
+			return false;
+
 	if (test0(pass) == false)
 		return false;
 	else if (test1(pass) == false)
