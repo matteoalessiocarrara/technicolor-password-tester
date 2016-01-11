@@ -20,6 +20,11 @@
 # ifndef HEADER_H
 # define HEADER_H
 
+/* Informazioni per la schermata di --help */
+# define SW_DESC "Prende in input delle password e stampa solo quelle valide per i router technicolor"
+# define SW_NAME "Technicolor Password Tester"
+# define BUG_EMAIL "sw.matteoac@gmail.com"
+# define HOME_PAGE_URL "http://github.com/matteoalessiocarrara/technicolor-password-tester"
 /* La lunghezza della password senza considerare eventuali \n alla fine */
 # define PASS_LEN 10
 

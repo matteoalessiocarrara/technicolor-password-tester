@@ -9,18 +9,26 @@ Genera delle possibili password con [crunch](http://sourceforge.net/projects/cru
 e le filtra con questo programma mostrando in output solo quelle valide
 
 ```
-richard% ./crunch 10 10 0123456789ABCDEF -s 001011223A | ./tpt-linux-64  
-001011223A  
-001011223B  
-001011223C  
-001011223D  
-...  
+richard% ./crunch 10 10 0123456789ABCDEF -s 001011223A | ./tpt-linux-64
+001011223A
+001011223B
+001011223C
+001011223D
+...
+```
+
+## Sintassi ##
+
+```
+tpt [quante_password_stampare]
 ```
 
 ## Funzionamento ##
 
-Il programma legge da stdin delle stringhe, e le riscrive su stdout solo quando
-sono password valide per i router technicolor. Il programma termina quando legge EOF.
+Il programma legge **da stdin** delle stringhe, e le riscrive su stdout solo quando
+sono password valide per i router technicolor. Il programma termina quando legge EOF,
+o quando raggiunge il limite di password da stampare (passato come parametro, vedere 
+la [sintassi](#sintassi))
 
 ### Input ###
 
@@ -33,10 +41,10 @@ Il programma accetta in input stringhe di qualsiasi tipo, ma solo quelle con que
 caratteristiche potrebbero essere password valide.
 
 Le stringhe possono essere inserite da tastiera o generate con altri programmi,
-come [crunch](http://sourceforge.net/projects/crunch-wordlist/), per poi 
+come [crunch](http://sourceforge.net/projects/crunch-wordlist/), per poi
 essere passate a questo filtro. Sopra c'è un [esempio](#esempio).
 
-La prima password valida è `001011223A`: se si usa un programma per generare 
+La prima password valida è `001011223A`: se si usa un programma per generare
 le password, è possibile usare questa come prima combinazione, perché tutte
 le combinazioni precedenti non sono valide.
 
@@ -64,5 +72,5 @@ Per cancellare tutti gli eseguibili, usare `make clean`.
 Write programs to work together. Write programs to handle text streams, because
 that is a universal interface.
 
-Aggiornamenti: [GitHub](https://github.com/matteoalessiocarrara/technicolor-password-tester)  
+Aggiornamenti: [GitHub](http://github.com/matteoalessiocarrara/technicolor-password-tester)
 Email: sw.matteoac@gmail.com
