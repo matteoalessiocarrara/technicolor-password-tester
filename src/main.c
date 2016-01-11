@@ -40,10 +40,10 @@ void help()
 {
 	/* FIXME Stringhe troppo lunghe, è brutto */
 
-	printf(SW_DESC"\n\n");
+	printf(SW_DESC "\n\n");
 	printf("Uso: tpt [quante_password_stampare]\n\n");
-	printf("Report bugs to: <"BUG_EMAIL">\n");
-	printf(SW_NAME" home page: <"HOME_PAGE_URL">\n");
+	printf("Report bugs to: <" BUG_EMAIL ">\n");
+	printf(SW_NAME " home page: <" HOME_PAGE_URL ">\n");
 
 	exit(0);
 }
