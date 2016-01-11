@@ -71,5 +71,5 @@ Per cancellare tutti gli eseguibili, usare `make clean`.
 Write programs to work together. Write programs to handle text streams, because
 that is a universal interface.
 
-Aggiornamenti: [GitHub](http://github.com/matteoalessiocarrara/technicolor-password-tester)
-Email: sw.matteoac@gmail.com
+Aggiornamenti: [GitHub](http://github.com/matteoalessiocarrara/technicolor-password-tester)  
+Email: sw.matteoac@gmail.com  

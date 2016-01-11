@@ -18,8 +18,8 @@
  */
 
 # include <stdio.h>
-# include <string.h>
 # include <stdlib.h>
+# include <string.h>
 # include <stdbool.h>
 
 # include "header.h"
@@ -27,10 +27,10 @@
 # include "debug.h"
 
 /* Controlla se alla fine della stringa c'è \n */
-# define line_is_truncated(str, len) (str[(len) - 1] == '\n'? false : true)
+# define line_is_truncated(str, len) (str[(len) - 1] != '\n')
 
 /* Controlla se è stato scelto un limite per le password da controllare
- * Se max_pass è maggiore di 0, allora si, altrimenti no
+ * Se var è maggiore di 0, allora si, altrimenti no
  */
 # define is_set_pass_limit(var) (var > 0)
 
