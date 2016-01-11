@@ -6,15 +6,14 @@ technicolor
 ## Esempio ##
 
 Genera delle possibili password con [crunch](http://sourceforge.net/projects/crunch-wordlist/),
-e le filtra con questo programma mostrando in output solo quelle valide
+e le filtra con questo programma mostrando in output quattro password valide
 
 ```
-richard% ./crunch 10 10 0123456789ABCDEF -s 001011223A | ./tpt-linux-64
+richard% ./crunch 10 10 0123456789ABCDEF -s 001011223A | ./tpt-linux-64 4
 001011223A
 001011223B
 001011223C
 001011223D
-...
 ```
 
 ## Sintassi ##
