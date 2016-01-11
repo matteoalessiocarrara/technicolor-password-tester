@@ -5,8 +5,8 @@ technicolor
 
 ## Esempio ##
 
-Genera delle possibili password con [crunch](http://sourceforge.net/projects/crunch-wordlist/),
-e le filtra con questo programma mostrando in output quattro password valide
+Genera delle password con [crunch](http://sourceforge.net/projects/crunch-wordlist/),
+e le filtra con questo programma che ne stampa 4 valide
 
 ```
 richard% ./crunch 10 10 0123456789ABCDEF -s 001011223A | ./tpt-linux-64 4
@@ -24,10 +24,9 @@ tpt [quante_password_stampare]
 
 ## Funzionamento ##
 
-Il programma legge **da stdin** delle stringhe, e le riscrive su stdout solo quando
+Il programma legge da stdin delle stringhe, e le riscrive su stdout solo quando
 sono password valide per i router technicolor. Il programma termina quando legge EOF,
-o quando raggiunge il limite di password da stampare (passato come parametro, vedere 
-la [sintassi](#sintassi))
+o quando raggiunge il limite di password da stampare.
 
 ### Input ###
 
