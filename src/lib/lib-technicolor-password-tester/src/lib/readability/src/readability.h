@@ -17,13 +17,13 @@
  * MA 02110-1301, USA.
  */
 
-# ifndef HEADER_H
-# define HEADER_H
+# include <stdbool.h>
 
-/* Informazioni per la schermata di --help */
-# define SW_DESC "Prende in input delle password e stampa solo quelle valide per i router technicolor"
-# define SW_NAME "Technicolor Password Tester"
-# define BUG_EMAIL "sw.matteoac@gmail.com"
-# define HOME_PAGE_URL "http://github.com/matteoalessiocarrara/technicolor-password-tester"
+# define and &&
+# define not !
+# define xor ^
+# define or ||
+# define is ==
 
-# endif
+typedef char * str;
+typedef char byte;

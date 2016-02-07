@@ -23,8 +23,10 @@
 # include <stdbool.h>
 
 # include "header.h"
-# include "filter.c"
-# include "debug.h"
+
+# include "lib/lib-technicolor-password-tester/src/header.h"
+# include "lib/lib-technicolor-password-tester/src/filter.c"
+# include "lib/lib-technicolor-password-tester/src/debug.h"
 
 /* Controlla se alla fine della stringa c'è \n */
 # define line_is_truncated(str, len) (str[(len) - 1] != '\n')

@@ -19,17 +19,15 @@
 
 # include <stdbool.h>
 
+# include "lib/readability/src/readability.h"
 # include "header.h"
 # include "debug.h"
 
-/* Quando anche uno short è troppo... */
-typedef unsigned char byte;
+/* Controlla se il carattere ch è 'A', 'B', 'C', 'D', 'E' o 'F' */
+# define is_af(ch) (((ch) >= 'A') and ((ch) <= 'F'))
 
-/* Controlla se il carattere è A, B, C, D, E o F */
-# define is_af(ch) (((ch) >= 'A') && ((ch) <= 'F'))
-
-/* Controlla se il carattere è un numero in ASCII */
-# define is_09(ch) (((ch) >= '0') && ((ch) <= '9'))
+/* Controlla se il carattere ch è un numero, in ASCII */
+# define is_09(ch) (((ch) >= '0') and ((ch) <= '9'))
 
 /* Converte un carattere ASCII esadecimale in un numero (-1 in caso di errore) */
 # define dec(hex) (is_09(hex)? hex - '0' : is_af(hex)? hex - 'A' + 10 : -1)
@@ -77,7 +75,7 @@ static inline bool test1(char * pass)
 	for (byte i = 0; i < PASS_LEN; i++)
 		is_af(pass[i])? af++ : numbers++;
 
-	return ((af > 5) || (numbers > 9))? false : true;
+	return ((af > 5) or (numbers > 9))? false : true;
 }
 
 
@@ -89,11 +87,11 @@ static inline bool test2(char * pass)
 	/* Ogni elemento di questo array rappresenta un carattere del charset
 	 * L'indice si ottiene semplicemente traducendo il carattere da esadecimale
 	 * a decimale
-	 * Per es, l'indice per "F" sarà 15, mentre per "A" 10
+	 * Per es, l'indice per 'F' sarà 15, mentre per 'A' 10, e per '2' 2
 	 */
 	byte times[16];
 
-	/* Azzeriamo ogni elemento dell'array times*/
+	/* Azzeriamo ogni elemento dell'array times */
 	for (byte i = 0; i < 16; i ++)
 		times[i] = 0;
 
@@ -122,16 +120,14 @@ extern inline bool is_valid_pass(char * pass)
 	 * di passarla ai test
 	 */
 	for (byte i = 0; i < PASS_LEN; i++)
-		if(!(is_09(pass[i]) ^ is_af(pass[i])))
+		if (not (is_09(pass[i]) or is_af(pass[i])))
 			return false;
 
-	if (test0(pass) == false)
-		return false;
-	else if (test1(pass) == false)
-		return false;
-	else if (test2(pass) == false)
-		return false;
-	else
-		/* Tutti i test superati, password valida :) */
-		return true;
+	if (test0(pass) is true)
+		if (test1(pass) is true)
+			if (test2(pass) is true)
+				return true;
+
+	/* Qualche test sopra non ha restituito true */
+	return false;
 }
